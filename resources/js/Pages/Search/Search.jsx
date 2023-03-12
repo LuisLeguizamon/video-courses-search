@@ -8,7 +8,7 @@ areas.forEach((data) => {
     areasNames.push(<li class="bg-slate-100 m-5 p-5 text-center">{data}</li>)
 })
 
-const Home = () => {
+export default function Search(){
     return (
         <>
             <div class="grid grid-cols-4 gap-4">
@@ -18,6 +18,4 @@ const Home = () => {
             </div>
         </>
     );
-};
-
-export default Home;
+}
