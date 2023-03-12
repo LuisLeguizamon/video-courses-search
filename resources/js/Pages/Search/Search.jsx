@@ -8,8 +8,8 @@ export default function Search(props){
 
     const areasNames = [];
 
-    areas.forEach((data) => {
-        areasNames.push(<li class="bg-slate-100 m-5 p-5 text-center">{data}</li>)
+    areas.forEach((data, index) => {
+        areasNames.push(<li class="bg-slate-100 m-5 p-5 text-center" key={index}>{data}</li>)
     });
 
     return (
