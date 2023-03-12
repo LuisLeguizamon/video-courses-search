@@ -1,14 +1,17 @@
 import React from "react";
 
-const areas = ['deportes', 'finanzas', 'liderazgo', 'programación'];
 
-const areasNames = [];
 
-areas.forEach((data) => {
-    areasNames.push(<li class="bg-slate-100 m-5 p-5 text-center">{data}</li>)
-})
 
-export default function Search(){
+export default function Search(props){
+    const areas = props.areas;
+
+    const areasNames = [];
+
+    areas.forEach((data) => {
+        areasNames.push(<li class="bg-slate-100 m-5 p-5 text-center">{data}</li>)
+    });
+
     return (
         <>
             <div class="grid grid-cols-4 gap-4">
