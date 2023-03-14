@@ -27,6 +27,7 @@ Route::get('/', function () {
 });
 
 Route::get('/search', [SearchController::class, 'search'])->name('search.show');
+Route::get('/search-by-category', [SearchController::class, 'searchByCategory'])->name('search.list');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

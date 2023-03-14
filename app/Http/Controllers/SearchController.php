@@ -16,4 +16,10 @@ class SearchController extends Controller
             'areas' => $areas,
         ]);
     }
+
+    public function searchByCategory(Request $request)
+    {
+        $category = $request->category;
+        dd($category);
+    }
 }
