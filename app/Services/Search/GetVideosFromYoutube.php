@@ -4,7 +4,7 @@ namespace App\Services\Search;
 
 class GetVideosFromYoutube
 {
-    public function execute(string $category)
+    public function execute(string $category) : array
     {
         $url = 'https://www.googleapis.com/youtube/v3/search';
         $params = [
@@ -28,6 +28,24 @@ class GetVideosFromYoutube
         $response = curl_exec($curl);
         curl_close($curl);
 
-        dd($response);
+        return $this->processResponse($response);
+    }
+
+    private function processResponse($response) : array
+    {
+        $responsePhpObject = json_decode($response);
+
+        $videos = array();
+
+        foreach ($responsePhpObject->items as $item) {
+            $video = [
+                'videoId' => $item->id->videoId,
+                'videoTitle' => $item->snippet->title
+            ];
+
+            array_push($videos, $video);
+        }
+
+        return $videos;
     }
 }
