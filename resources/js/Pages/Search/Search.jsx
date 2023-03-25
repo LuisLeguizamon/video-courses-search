@@ -7,7 +7,6 @@ export default function Search(props){
     const areasNames = [];
 
     const searchByCategory = (data) => {
-        console.log(data);
         const url = route("search.list");
         router.get(url, { category: data });
     };
