@@ -23,7 +23,7 @@ class SearchController extends Controller
 
         $url = 'https://www.googleapis.com/youtube/v3/search';
         $params = [
-            'key' => '',
+            'key' => env('YOUTUBE_API_KEY'),
             'maxResults' => 5,
             'part' => 'id,snippet',
             'q' => $category,
