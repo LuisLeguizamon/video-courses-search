@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Search\GetVideosFromYoutube;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -20,24 +21,6 @@ class SearchController extends Controller
     public function searchByCategory(Request $request)
     {
         $category = $request->category;
-
-        $url = 'https://www.googleapis.com/youtube/v3/search';
-        $params = [
-            'key' => env('YOUTUBE_API_KEY'),
-            'maxResults' => 5,
-            'part' => 'id,snippet',
-            'q' => $category,
-            'type' => 'video',
-        ];
-        $url .= '?' . http_build_query($params);
-
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-        $response = curl_exec($curl);
-        curl_close($curl);
-
-        dd($response);
+        app(GetVideosFromYoutube::class)->execute($category);
     }
 }
