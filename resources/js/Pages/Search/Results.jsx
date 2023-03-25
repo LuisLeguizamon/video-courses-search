@@ -5,7 +5,12 @@ export default function Results(props) {
     const videos = props.videos;
 
     const videosTitle = videos.map((item) => {
-        return <li className="p-5" key={item.videoId}>{item.videoTitle}</li>;
+        const url = route("search.show_video", { 'videoId': item.videoId });
+        return (
+            <li className="p-5" key={item.videoId}>
+                <a href={url}>{item.videoTitle}</a>
+            </li>
+        );
     });
 
     return (

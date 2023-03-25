@@ -28,4 +28,13 @@ class SearchController extends Controller
             'videos' => $videos,
         ]);
     }
+
+    public function showVideo(Request $request)
+    {
+        $videoId = $request['videoId'];
+
+        return Inertia::render('Search/ShowVideo', [
+            'videoId' => $videoId,
+        ]);
+    }
 }
