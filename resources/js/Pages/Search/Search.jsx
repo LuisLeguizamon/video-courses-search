@@ -15,7 +15,7 @@ export default function Search(props){
         areasNames.push(
             <li
                 onClick={ () => searchByCategory(data) }
-                className="bg-slate-100 m-5 p-5 text-center"
+                className="bg-slate-100 m-5 p-5 text-center cursor-pointer"
                 key={index}>
                 {data}
             </li>)
