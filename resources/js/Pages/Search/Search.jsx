@@ -13,20 +13,20 @@ export default function Search(props){
 
     areas.forEach((data, index) => {
         areasNames.push(
-            <li
+            <a
                 onClick={ () => searchByCategory(data) }
-                className="bg-slate-100 m-5 p-5 text-center cursor-pointer"
+                className="bg-white capitalize cursor-pointer font-medium p-16 rounded shadow-2xl shadow-gray-500/20 text-gray-700 text-center text-2xl w-full h-full"
                 key={index}>
                 {data}
-            </li>)
+            </a>)
     });
 
     return (
         <>
-            <div className="grid grid-cols-4 gap-4">
-                <ul className="m-5 p-5">
+            <div className="bg-gray-100 items-center min-h-screen">
+                <div className="grid grid-cols-2 gap-8 p-20">
                     {areasNames}
-                </ul>
+                </div>
             </div>
         </>
     );
