@@ -15,7 +15,7 @@ export default function Search(props){
         areasNames.push(
             <a
                 onClick={ () => searchByCategory(data) }
-                className="bg-white capitalize cursor-pointer font-medium p-16 rounded shadow-2xl shadow-gray-500/20 text-gray-700 text-center text-2xl w-full h-full"
+                className="bg-white capitalize cursor-pointer font-medium p-16 rounded shadow-2xl shadow-gray-500/20 text-gray-700 text-center text-xl w-full h-full"
                 key={index}>
                 {data}
             </a>)
