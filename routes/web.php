@@ -17,6 +17,7 @@ use Inertia\Inertia;
 |
 */
 
+/*
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -25,10 +26,6 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
-Route::get('/search', [SearchController::class, 'search'])->name('search.show');
-Route::get('/search-by-category', [SearchController::class, 'searchByCategory'])->name('search.list');
-Route::get('/show-video', [SearchController::class, 'showVideo'])->name('search.show_video');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -39,5 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+*/
+
+Route::get('/', [SearchController::class, 'search'])->name('search.show');
+Route::get('/search-by-category', [SearchController::class, 'searchByCategory'])->name('search.list');
+Route::get('/show-video', [SearchController::class, 'showVideo'])->name('search.show_video');
 
 require __DIR__.'/auth.php';
