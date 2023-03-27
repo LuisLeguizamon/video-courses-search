@@ -11,7 +11,8 @@ export default function Results(props) {
         const url = route("search.show_video", { 'videoId': item.videoId });
         return (
             <li onClick={ () => goToVideo(url) }
-                className="bg-white capitalize cursor-pointer mt-5 p-5 h-auto w-full rounded shadow-2xl shadow-gray-500/20"
+                className="bg-white capitalize cursor-pointer mt-5 p-5 h-auto w-full rounded shadow-2xl shadow-gray-500/20
+                           hover:bg-slate-100 transition duration-300 ease-in-out"
                 key={item.videoId}>
                 {item.videoTitle}
             </li>
