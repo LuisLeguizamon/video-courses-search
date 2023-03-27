@@ -17,11 +17,13 @@ export default function Results(props) {
     return (
         <>
             <div className="bg-gray-100 items-center min-h-screen">
-                <div className="grid grid-cols-2 gap-2 p-5">
-                    <div className="capitalize font-extrabold p-8 text-gray-700 text-center text-5xl w-1/2 h-full">
+                <div className="grid grid-cols-4 gap-2 p-5">
+                    <div className="col-span-1 capitalize font-extrabold p-8 text-gray-700 text-center text-5xl">
                         {category}
                     </div>
-                    <ul>{videosTitle}</ul>
+                    <div className="col-span-3">
+                        <ul>{videosTitle}</ul>
+                    </div>
                 </div>
             </div>
         </>
