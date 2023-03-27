@@ -1,5 +1,5 @@
 import React from "react";
-import { router } from '@inertiajs/react'
+import { router } from '@inertiajs/react';
 
 export default function Search(props){
     const areas = props.areas;
