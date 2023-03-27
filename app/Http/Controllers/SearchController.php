@@ -11,7 +11,7 @@ class SearchController extends Controller
 {
     public function search()
     {
-        $areas = ['deportes', 'finanzas', 'liderazgo', 'programación'];
+        $areas = ['sports', 'finance', 'leadership', 'coding'];
 
         return Inertia::render('Search/Search', [
             'areas' => $areas,
