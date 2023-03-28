@@ -1,5 +1,6 @@
 import React from "react";
 import { router } from '@inertiajs/react';
+import Header from "@/Layouts/Header";
 
 export default function Results(props) {
     const category = props.category;
@@ -21,6 +22,7 @@ export default function Results(props) {
 
     return (
         <>
+            <Header></Header>
             <div className="bg-gray-100 items-center min-h-screen">
                 <div className="grid grid-cols-4 gap-2 p-5">
                     <div className="col-span-1 capitalize font-extrabold p-8 text-gray-700 text-center text-5xl">

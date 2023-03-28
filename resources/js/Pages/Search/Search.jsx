@@ -1,5 +1,6 @@
 import React from "react";
 import { router } from '@inertiajs/react';
+import Header from "@/Layouts/Header";
 
 export default function Search(props){
     const areas = props.areas;
@@ -25,6 +26,7 @@ export default function Search(props){
 
     return (
         <>
+            <Header></Header>
             <div className="bg-gray-100 items-center min-h-screen">
                 <div className="grid grid-cols-2 gap-8 p-20">
                     {areasNames}

@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "@/Layouts/Header";
 
 export default function Results(props) {
     const videoId = props.videoId;
@@ -6,6 +7,7 @@ export default function Results(props) {
 
     return (
         <>
+            <Header></Header>
             <div className="grid grid-cols-1 mt-20">
                 <div className="m-auto">
                     <iframe
