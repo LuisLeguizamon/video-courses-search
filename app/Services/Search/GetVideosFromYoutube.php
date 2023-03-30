@@ -33,9 +33,9 @@ class GetVideosFromYoutube
     {
         return [
             'key' => env('YOUTUBE_API_KEY'),
-            'maxResults' => 5,
+            'maxResults' => 10,
             'part' => 'id,snippet',
-            'q' => $category,
+            'q' => $category.' course',
             'type' => 'video',
             'videoCategoryId' => 27,
             /* videoCategoryId = 27 for Education.
