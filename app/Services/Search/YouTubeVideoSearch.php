@@ -2,9 +2,9 @@
 
 namespace App\Services\Search;
 
-use App\Contracts\VideoSearch;
+use App\Contracts\VideoSearchContract;
 
-class YouTubeVideoSearch implements VideoSearch
+class YouTubeVideoSearch implements VideoSearchContract
 {
     public function search(string $category): array
     {

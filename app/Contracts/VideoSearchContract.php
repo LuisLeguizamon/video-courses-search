@@ -2,7 +2,7 @@
 
 namespace App\Contracts;
 
-interface VideoSearch
+interface VideoSearchContract
 {
     public function search(string $category);
 }
