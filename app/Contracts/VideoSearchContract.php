@@ -4,5 +4,5 @@ namespace App\Contracts;
 
 interface VideoSearchContract
 {
-    public function search(string $category);
+    public function search(string $category): array;
 }
