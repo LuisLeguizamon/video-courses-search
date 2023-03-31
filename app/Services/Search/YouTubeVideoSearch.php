@@ -2,9 +2,11 @@
 
 namespace App\Services\Search;
 
-class GetVideosFromYoutube
+use App\Contracts\VideoSearch;
+
+class YouTubeVideoSearch implements VideoSearch
 {
-    public function execute(string $category): array
+    public function search(string $category): array
     {
         $url = $this->getUrl($category);
 
