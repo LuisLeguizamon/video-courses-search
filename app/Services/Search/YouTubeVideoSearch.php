@@ -17,11 +17,9 @@ class YouTubeVideoSearch implements VideoSearch
 
     private function processResponse($response): array
     {
-        $responsePhpObject = json_decode($response);
-
         $videos = array();
 
-        foreach ($responsePhpObject->items as $item) {
+        foreach ($response->items as $item) {
             $video = [
                 'videoId' => $item->id->videoId,
                 'videoTitle' => $item->snippet->title
