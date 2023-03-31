@@ -4,7 +4,7 @@ namespace App\Services\Search;
 
 class GetVideosFromYoutube
 {
-    public function execute(string $category) : array
+    public function execute(string $category): array
     {
         $url = $this->getUrl($category);
 
@@ -29,13 +29,13 @@ class GetVideosFromYoutube
         return $url;
     }
 
-    private function getParams(string $category) : array
+    private function getParams(string $category): array
     {
         return [
             'key' => env('YOUTUBE_API_KEY'),
             'maxResults' => 10,
             'part' => 'id,snippet',
-            'q' => $category.' course',
+            'q' => $category . ' course',
             'type' => 'video',
             'videoCategoryId' => 27,
             /* videoCategoryId = 27 for Education.
@@ -45,7 +45,7 @@ class GetVideosFromYoutube
         ];
     }
 
-    private function processResponse($response) : array
+    private function processResponse($response): array
     {
         $responsePhpObject = json_decode($response);
 
