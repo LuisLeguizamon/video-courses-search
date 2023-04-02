@@ -1,14 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { router } from '@inertiajs/react';
 import Header from "@/Layouts/Header";
 
 export default function Results(props) {
     const category = props.category;
     const videos = props.videos;
+    const[slicedVideos, setSlicedVideos] = useState(videos.slice(0,5));//set initial value to the first 5 videos
 
     let goToVideo = (url) => router.get(url);
 
-    const videosTitle = videos.map((item) => {
+    const numberOfPages = videos.length / 5;//divide in pages of 5 items
+
+    const buttons = [];
+    for (let index = 0; index < numberOfPages; index++) {
+        buttons.push(
+            <button
+                key={index}
+                className="bg-white m-5 p-5 hover:bg-slate-100"
+                onClick={() => getCurrentVideos(index)}
+            >
+                {index + 1}
+            </button>
+        );
+    }
+
+    let getCurrentVideos = (index) => {
+        setSlicedVideos(videos.slice(index*5, index*5+5));
+    };
+    
+    const videosTitle = slicedVideos.map((item) => {
         const url = route("search.show_video", { 'videoId': item.videoId });
         return (
             <li onClick={ () => goToVideo(url) }
@@ -31,6 +51,9 @@ export default function Results(props) {
                     <div className="col-span-3">
                         <ul>{videosTitle}</ul>
                     </div>
+                </div>
+                <div className="text-center">
+                    {buttons}
                 </div>
             </div>
         </>

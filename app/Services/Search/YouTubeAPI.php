@@ -42,7 +42,7 @@ class YouTubeAPI implements YouTubeAPIContract
     {
         return [
             'key' => $this->apiKey,
-            'maxResults' => 10,
+            'maxResults' => 20,
             'part' => 'id,snippet',
             'q' => $category . ' course',
             'type' => 'video',
