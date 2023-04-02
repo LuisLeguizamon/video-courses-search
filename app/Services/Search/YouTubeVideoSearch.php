@@ -8,7 +8,7 @@ class YouTubeVideoSearch implements VideoSearchContract
 {
     public function search(string $category): array
     {
-        $api = new YouTubeAPI();
+        $api = new YouTubeAPI(env('YOUTUBE_API_KEY'));
 
         $videos = $api->getVideos($category);
 

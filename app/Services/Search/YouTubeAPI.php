@@ -6,6 +6,13 @@ use App\Contracts\YouTubeAPIContract;
 
 class YouTubeAPI implements YouTubeAPIContract
 {
+    private $apiKey;
+
+    public function __construct(string $apiKey)
+    {
+        $this->apiKey = $apiKey;
+    }
+
     public function getVideos(string $category): object
     {
         $url = $this->getUrl($category);
@@ -34,7 +41,7 @@ class YouTubeAPI implements YouTubeAPIContract
     private function getParams(string $category): array
     {
         return [
-            'key' => env('YOUTUBE_API_KEY'),
+            'key' => $this->apiKey,
             'maxResults' => 10,
             'part' => 'id,snippet',
             'q' => $category . ' course',
