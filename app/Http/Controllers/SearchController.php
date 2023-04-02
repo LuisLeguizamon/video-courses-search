@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Search\GetVideosFromYoutube;
+use App\Services\Search\YouTubeVideoSearch;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -21,7 +21,7 @@ class SearchController extends Controller
     public function searchByCategory(Request $request)
     {
         $category = $request->category;
-        $videos = app(GetVideosFromYoutube::class)->execute($category);
+        $videos = app(YouTubeVideoSearch::class)->search($category);
 
         return Inertia::render('Search/Results', [
             'category' => $category,

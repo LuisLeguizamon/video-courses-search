@@ -2,9 +2,18 @@
 
 namespace App\Services\Search;
 
-class GetVideosFromYoutube
+use App\Contracts\YouTubeAPIContract;
+
+class YouTubeAPI implements YouTubeAPIContract
 {
-    public function execute(string $category) : array
+    private $apiKey;
+
+    public function __construct(string $apiKey)
+    {
+        $this->apiKey = $apiKey;
+    }
+
+    public function getVideos(string $category): object
     {
         $url = $this->getUrl($category);
 
@@ -15,7 +24,7 @@ class GetVideosFromYoutube
         $response = curl_exec($curl);
         curl_close($curl);
 
-        return $this->processResponse($response);
+        return json_decode($response);
     }
 
     private function getUrl(string $category)
@@ -29,13 +38,13 @@ class GetVideosFromYoutube
         return $url;
     }
 
-    private function getParams(string $category) : array
+    private function getParams(string $category): array
     {
         return [
-            'key' => env('YOUTUBE_API_KEY'),
+            'key' => $this->apiKey,
             'maxResults' => 10,
             'part' => 'id,snippet',
-            'q' => $category.' course',
+            'q' => $category . ' course',
             'type' => 'video',
             'videoCategoryId' => 27,
             /* videoCategoryId = 27 for Education.
@@ -43,23 +52,5 @@ class GetVideosFromYoutube
              https://youtube.googleapis.com/youtube/v3/videoCategories?part=id&part=snippet&regionCode=PY&key=[YOUR_API_KEY]
             */
         ];
-    }
-
-    private function processResponse($response) : array
-    {
-        $responsePhpObject = json_decode($response);
-
-        $videos = array();
-
-        foreach ($responsePhpObject->items as $item) {
-            $video = [
-                'videoId' => $item->id->videoId,
-                'videoTitle' => $item->snippet->title
-            ];
-
-            array_push($videos, $video);
-        }
-
-        return $videos;
     }
 }
