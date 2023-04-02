@@ -9,9 +9,9 @@ export default function Results(props) {
         <>
             <Header></Header>
             <div className="grid grid-cols-1 mt-20">
-                <div className="m-auto">
+                <div className="m-5">
                     <iframe
-                        width="800"
+                        width="100%"
                         height="315"
                         src={url}
                         title="YouTube video player"
