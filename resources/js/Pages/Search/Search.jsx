@@ -28,7 +28,7 @@ export default function Search(props){
         <>
             <Header></Header>
             <div className="bg-gray-100 items-center min-h-screen">
-                <div className="grid grid-cols-2 gap-8 p-20">
+                <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8 p-20">
                     {areasNames}
                 </div>
             </div>

@@ -44,7 +44,7 @@ export default function Results(props) {
         <>
             <Header></Header>
             <div className="bg-gray-100 items-center min-h-screen">
-                <div className="grid grid-cols-4 gap-2 p-5">
+                <div className="grid md:grid-cols-4 sm:grid-gols-1 gap-2 p-5">
                     <div className="col-span-1 capitalize font-extrabold p-8 text-gray-700 text-center text-5xl">
                         {category}
                     </div>
