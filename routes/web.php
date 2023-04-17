@@ -42,4 +42,4 @@ Route::get('/', [SearchController::class, 'search'])->name('search.show');
 Route::get('/search-by-category', [SearchController::class, 'searchByCategory'])->name('search.list');
 Route::get('/show-video', [SearchController::class, 'showVideo'])->name('search.show_video');
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';
