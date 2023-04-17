@@ -9,11 +9,11 @@ use Inertia\Inertia;
 
 class SearchController extends Controller
 {
-    public function search()
+    public function home()
     {
         $areas = ['sports', 'finance', 'leadership', 'coding'];
 
-        return Inertia::render('Search/Search', [
+        return Inertia::render('Search/Home', [
             'areas' => $areas,
         ]);
     }

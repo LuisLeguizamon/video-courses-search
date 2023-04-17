@@ -2,7 +2,7 @@ import React from "react";
 import { router } from '@inertiajs/react';
 import Header from "@/Layouts/Header";
 
-export default function Search(props){
+export default function Home(props){
     const areas = props.areas;
 
     const areasNames = [];

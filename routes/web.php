@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
 });
 */
 
-Route::get('/', [SearchController::class, 'search'])->name('search.show');
+Route::get('/', [SearchController::class, 'home'])->name('search.home');
 Route::get('/search-by-category', [SearchController::class, 'searchByCategory'])->name('search.list');
 Route::get('/show-video', [SearchController::class, 'showVideo'])->name('search.show_video');
 
