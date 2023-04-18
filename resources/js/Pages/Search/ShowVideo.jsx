@@ -1,4 +1,5 @@
 import React from "react";
+import { Head } from '@inertiajs/react';
 import Header from "@/Layouts/Header";
 
 export default function Results(props) {
@@ -8,6 +9,7 @@ export default function Results(props) {
     return (
         <>
             <Header></Header>
+            <Head title="video" />
             <div className="grid grid-cols-1 mt-20">
                 <div className="m-5">
                     <iframe

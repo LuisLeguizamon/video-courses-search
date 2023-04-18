@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { router } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import Header from "@/Layouts/Header";
 
 export default function Results(props) {
@@ -43,6 +44,7 @@ export default function Results(props) {
     return (
         <>
             <Header></Header>
+            <Head title={category} />
             <div className="bg-gray-100 items-center min-h-screen">
                 <div className="grid md:grid-cols-4 sm:grid-gols-1 gap-2 p-5">
                     <div className="col-span-1 capitalize font-extrabold p-8 text-gray-700 text-center text-5xl">

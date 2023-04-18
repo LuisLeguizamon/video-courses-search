@@ -1,5 +1,6 @@
 import React from "react";
 import { router } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import Header from "@/Layouts/Header";
 
 export default function Home(props){
@@ -27,6 +28,7 @@ export default function Home(props){
     return (
         <>
             <Header></Header>
+            <Head title="Home" />
             <div className="bg-gray-100 items-center min-h-screen">
                 <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8 p-20">
                     {areasNames}
