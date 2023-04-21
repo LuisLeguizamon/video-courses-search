@@ -46,7 +46,7 @@ class SearchController extends Controller
         $videoID = $request->video_id;
         $userId = Auth::user()->id;
         $favoriteVideo = Favorite::where('video_id', $videoID)->where('user_id', $userId)->first();
-dd($favoriteVideo);
+
         if (! isset($favoriteVideo)) {
             $favorite = new Favorite();
             $favorite->video_id = $request->video_id;
