@@ -12,14 +12,14 @@ class MarkVideoAsFavorite
         $userId = Auth::user()->id;
         $favoriteVideo = Favorite::where('video_id', $videoId)->where('user_id', $userId)->first();
 
-        if (!isset($favoriteVideo)) {
-            $this->createFavorite($userId, $videoId);
+        if (isset($favoriteVideo)) {
+            $favoriteVideo->delete();
         } else {
-            // TODO: message that video already been marked as favorite
+            $this->createFavorite($userId, $videoId);
         }
     }
 
-    public function createFavorite($userId, $videoId): void
+    private function createFavorite($userId, $videoId): void
     {
         $favorite = new Favorite();
         $favorite->video_id = $videoId;
