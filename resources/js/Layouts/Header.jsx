@@ -8,10 +8,10 @@ function Header() {
             <img src="/logo.png" width={100} height={100} alt="logo" />
             Home
         </a>
-        {/* <ul className="flex items-center">
-          <li><a href="#" className="mr-6">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
-        </ul> */}
+        <ul className="flex items-center">
+          <li><a href={route('login')} className="mr-6">Login</a></li>
+          <li><a href={route('register')} className="mr-6">Register</a></li>
+        </ul>
       </nav>
     </header>
   );
