@@ -64,8 +64,6 @@ class SearchController extends Controller
             app(markVideoAsFavorite::class)->execute($videoId);
         });
 
-        return Inertia::render('Search/ShowVideo', [
-            'videoId' => $videoId,
-        ]);
+        return redirect()->route('search.show_video', ['videoId' => $videoId]);
     }
 }
