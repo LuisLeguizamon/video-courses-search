@@ -1,5 +1,6 @@
 import React from "react";
 import { Head } from '@inertiajs/react';
+import { router } from '@inertiajs/react';
 import Header from "@/Layouts/Header";
 
 export default function Results({auth, videoId}) {
@@ -8,9 +9,8 @@ export default function Results({auth, videoId}) {
 
     let favoriteContent;
 
-    function markAsFavorite()
-    {
-        alert("mark")
+    function markAsFavorite() {
+        router.post(route("search.mark_favorite_video", {video_id: videoId}));
     }
 
     if (auth.user) {

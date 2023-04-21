@@ -37,4 +37,9 @@ class SearchController extends Controller
             'videoId' => $videoId,
         ]);
     }
+
+    public function markVideoAsFavorite(Request $request)
+    {
+        dd($request->all());
+    }
 }
