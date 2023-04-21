@@ -3,9 +3,8 @@ import { router } from '@inertiajs/react';
 import { Head } from '@inertiajs/react';
 import Header from "@/Layouts/Header";
 
-export default function Results(props) {
-    const category = props.category;
-    const videos = props.videos;
+export default function Results({auth, category, videos}) {
+
     const[slicedVideos, setSlicedVideos] = useState(videos.slice(0,5));//set initial value to the first 5 videos
 
     let goToVideo = (url) => router.get(url);
@@ -43,7 +42,7 @@ export default function Results(props) {
 
     return (
         <>
-            <Header></Header>
+            <Header auth={auth}></Header>
             <Head title={category} />
             <div className="bg-gray-100 items-center min-h-screen">
                 <div className="grid md:grid-cols-4 sm:grid-gols-1 gap-2 p-5">
