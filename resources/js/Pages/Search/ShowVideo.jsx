@@ -16,10 +16,10 @@ export default function Results({auth, videoId}) {
     if (auth.user) {
         favoriteContent = 
             <div className="text-center">
-                <span className="bg-slate-100 border border-transparent px-2 py-3 rounded-md text-sm hover:bg-slate-200 transition ease-in-out duration-300"
+                <button className="bg-slate-100 border border-transparent px-2 py-3 rounded-md text-sm hover:bg-slate-200 transition ease-in-out duration-300"
                       onClick={() => markAsFavorite()}>
                     Mark as Favorite
-                </span>
+                </button>
             </div>;
     }
     return (
