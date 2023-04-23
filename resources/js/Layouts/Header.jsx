@@ -1,5 +1,4 @@
 import React from 'react';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 
 function Header(props) {
   let loginContent;
@@ -27,9 +26,11 @@ function Header(props) {
             Home
         </a>
         <div className="">
-            <ResponsiveNavLink href={route('search.favorites.list')} active={route().current('search.favorites.list')} className='bg-white'>
+            <a href={route('search.favorites.list')} active={route().current('search.favorites.list')}
+              className="items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-800 bg-white hover:text-gray-500 focus:outline-none transition ease-in-out duration-150">
+                <i className="fa-regular fa-star mr-1 text-indigo-600"></i>
                 Favorites
-            </ResponsiveNavLink>
+            </a>
         </div>
         <ul className="flex items-center">
           {loginContent}
