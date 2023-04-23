@@ -12,33 +12,15 @@ export default function Home({ auth, areas }){
     };
 
     areas.forEach((data, index) => {
-        let custombg = '';
-        switch (data) {
-            case 'sports':
-                custombg = 'bg-gradient-to-r from-cyan-500 to-blue-500';
-                break;
-            case 'finance':
-                custombg = 'bg-gradient-to-r from-cyan-500 to-emerald-500';
-                break;
-            case 'leadership':
-                custombg = 'bg-gradient-to-r from-sky-500 to-blue-800';
-                break;
-            case 'coding':
-                custombg = 'bg-gradient-to-r from-blue-500 to-purple-500';
-                break;
-            default:
-                break;
-        };
-
         areasNames.push(
             <a
-                onClick={ () => searchByCategory(data) }
+                onClick={ () => searchByCategory(data.area) }
                 className={`bg-white capitalize cursor-pointer font-medium p-16 rounded shadow-2xl
-                           shadow-gray-500/20 text-gray-100 text-center text-xl w-full h-full
-                           ${custombg}
-                           hover:from-blue-500 hover:to-cyan-500`}
+                           shadow-gray-500/20 text-gray-100 text-center text-2xl w-full h-full
+                           ${data.background}
+                           hover:from-blue-500 hover:to-cyan-500 hover:text-white`}
                 key={index}>
-                {data}
+                {data.area}
             </a>)
     });
 

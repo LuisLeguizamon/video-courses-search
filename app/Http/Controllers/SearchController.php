@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\AreasHelper;
 use App\Models\Favorite;
 use App\Services\Favorite\MarkVideoAsFavorite;
 use App\Services\Search\YouTubeVideoSearch;
@@ -15,10 +16,8 @@ class SearchController extends Controller
 {
     public function home()
     {
-        $areas = ['sports', 'finance', 'leadership', 'coding'];
-
         return Inertia::render('Search/Home', [
-            'areas' => $areas,
+            'areas' => AreasHelper::getAreas(),
         ]);
     }
 
