@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class MarkVideoAsFavorite
 {
-    public function execute(string $videoId): void
+    public function execute(string $videoId, string $videoTitle): void
     {
         $userId = Auth::user()->id;
         $favoriteVideo = Favorite::where('video_id', $videoId)->where('user_id', $userId)->first();
@@ -15,15 +15,16 @@ class MarkVideoAsFavorite
         if (isset($favoriteVideo)) {
             $favoriteVideo->delete();
         } else {
-            $this->createFavorite($userId, $videoId);
+            $this->createFavorite($userId, $videoId, $videoTitle);
         }
     }
 
-    private function createFavorite($userId, $videoId): void
+    private function createFavorite($userId, $videoId, $videoTitle): void
     {
         $favorite = new Favorite();
         $favorite->video_id = $videoId;
         $favorite->user_id = $userId;
+        $favorite->title = $videoTitle;
         $favorite->save();
     }
 }

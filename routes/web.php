@@ -42,5 +42,6 @@ Route::get('/', [SearchController::class, 'home'])->name('search.home');
 Route::get('/search-by-category', [SearchController::class, 'searchByCategory'])->name('search.list');
 Route::get('/show-video', [SearchController::class, 'showVideo'])->name('search.show_video');
 Route::post('/mark-video-favorite', [SearchController::class, 'markVideoAsFavorite'])->name('search.mark_favorite_video');
+Route::get('/favorites', [SearchController::class, 'getFavorites'])->name('search.favorites.list');
 
 require __DIR__.'/auth.php';
