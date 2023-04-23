@@ -70,4 +70,21 @@ class SearchController extends Controller
 
         return redirect()->route('search.show_video', ['videoId' => $videoId]);
     }
+
+    public function getFavorites()
+    {
+        $user = Auth::user();
+        $favoriteVideos = null;
+
+        if (isset($user)) {
+            $userId = Auth::user()->id;
+            $favoriteVideos = Favorite::where('user_id', $userId)->get();
+        } else {
+            return redirect()->route('login');
+        }
+
+        return Inertia::render('Search/Favorites', [
+            'videos' => $favoriteVideos,
+        ]);
+    }
 }
