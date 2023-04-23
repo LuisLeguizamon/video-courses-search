@@ -1,4 +1,5 @@
 import React from 'react';
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 
 function Header(props) {
   let loginContent;
@@ -25,6 +26,11 @@ function Header(props) {
             <img src="/logo.png" width={100} height={100} alt="logo" />
             Home
         </a>
+        <div className="">
+            <ResponsiveNavLink href={route('search.favorites.list')} active={route().current('search.favorites.list')} className='bg-white'>
+                Favorites
+            </ResponsiveNavLink>
+        </div>
         <ul className="flex items-center">
           {loginContent}
           {registerContent}
