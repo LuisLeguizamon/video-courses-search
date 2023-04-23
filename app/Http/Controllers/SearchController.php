@@ -36,6 +36,7 @@ class SearchController extends Controller
     public function showVideo(Request $request)
     {
         $videoId = $request['videoId'];
+        $videoTitle = $request['title'];
 
         $user = Auth::user();
 
@@ -48,6 +49,7 @@ class SearchController extends Controller
 
         return Inertia::render('Search/ShowVideo', [
             'videoId' => $videoId,
+            'videoTitle' => $videoTitle,
             'favoriteVideo' => $favoriteVideo,
         ]);
     }
@@ -55,13 +57,15 @@ class SearchController extends Controller
     public function markVideoAsFavorite(Request $request)
     {
         $validated = $request->validate([
-            'video_id' => 'required'
+            'video_id' => 'required',
+            'video_title' => 'required',
         ]);
 
         $videoId = $validated['video_id'];
+        $videoTitle = $validated['video_title'];
 
-        DB::transaction(function () use ($videoId) {
-            app(markVideoAsFavorite::class)->execute($videoId);
+        DB::transaction(function () use ($videoId, $videoTitle) {
+            app(markVideoAsFavorite::class)->execute($videoId, $videoTitle);
         });
 
         return redirect()->route('search.show_video', ['videoId' => $videoId]);

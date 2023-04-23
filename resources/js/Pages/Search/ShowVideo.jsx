@@ -3,13 +3,13 @@ import { Head } from '@inertiajs/react';
 import { router } from '@inertiajs/react';
 import Header from "@/Layouts/Header";
 
-export default function Results({auth, favoriteVideo, videoId}) {
+export default function Results({auth, favoriteVideo, videoId, videoTitle}) {
     const url = "https://www.youtube.com/embed/"+videoId;
 
     let favoriteContent;
 
     function markAsFavorite() {
-        router.post(route("search.mark_favorite_video", {video_id: videoId}));
+        router.post(route("search.mark_favorite_video", {video_id: videoId, video_title: videoTitle}));
     }
 
     if (auth.user) {
