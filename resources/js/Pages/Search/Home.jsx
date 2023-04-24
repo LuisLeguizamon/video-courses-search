@@ -12,16 +12,29 @@ export default function Home({ auth, areas }){
     };
 
     areas.forEach((data, index) => {
-        areasNames.push(
-            <a
-                onClick={ () => searchByCategory(data.area) }
-                className={`bg-white capitalize cursor-pointer font-medium p-16 rounded shadow-2xl
-                           shadow-gray-500/20 text-gray-100 text-center text-2xl w-full h-full
-                           ${data.background}
-                           hover:from-blue-500 hover:to-cyan-500 hover:text-white`}
-                key={index}>
-                {data.area}
-            </a>)
+        if (index%2 == 0) {
+            areasNames.push(
+                <a
+                    onClick={ () => searchByCategory(data.area) }
+                    className={`bg-white capitalize cursor-pointer font-medium p-16 rounded shadow-2xl
+                            shadow-gray-500/20 text-gray-100 text-center text-2xl w-full h-full
+                            bg-gradient-to-r from-cyan-500 to-blue-500
+                            hover:from-blue-500 hover:to-cyan-500 hover:text-white`}
+                    key={index}>
+                    {data.area}
+                </a>)
+        } else {
+            areasNames.push(
+                <a
+                    onClick={ () => searchByCategory(data.area) }
+                    className={`bg-white capitalize cursor-pointer font-medium p-16 rounded shadow-2xl
+                            shadow-gray-500/20 text-gray-100 text-center text-2xl w-full h-full
+                            bg-gradient-to-r from-cyan-500 to-emerald-500
+                            hover:from-blue-500 hover:to-cyan-500 hover:text-white`}
+                    key={index}>
+                    {data.area}
+                </a>)
+        }
     });
 
     return (
