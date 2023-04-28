@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Foundation\Application;
@@ -43,7 +44,8 @@ Route::controller(FavoriteController::class)->prefix('favorites')->group(functio
     Route::post('/', 'store')->name('favorites.store');
 });
 
-Route::get('/', [SearchController::class, 'home'])->name('search.home');
+Route::get('/', [HomeController::class, 'show'])->name('home.show');
+
 Route::get('/search-by-category', [SearchController::class, 'searchByCategory'])->name('search.list');
 Route::get('/show-video', [SearchController::class, 'showVideo'])->name('search.show_video');
 

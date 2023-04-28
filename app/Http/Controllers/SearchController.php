@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\AreasHelper;
 use App\Models\Favorite;
 use App\Services\Search\YouTubeVideoSearch;
 use Illuminate\Http\Request;
@@ -12,13 +11,6 @@ use Inertia\Inertia;
 
 class SearchController extends Controller
 {
-    public function home()
-    {
-        return Inertia::render('Search/Home', [
-            'areas' => AreasHelper::getAreas(),
-        ]);
-    }
-
     public function searchByCategory(Request $request)
     {
         $category = $request->category;
