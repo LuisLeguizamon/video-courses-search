@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Foundation\Application;
@@ -37,11 +38,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::controller(FavoriteController::class)->prefix('favorites')->group(function() {
+    Route::get('/', 'index')->name('favorites.list');
+    Route::post('/', 'store')->name('favorites.store');
+});
 
 Route::get('/', [SearchController::class, 'home'])->name('search.home');
 Route::get('/search-by-category', [SearchController::class, 'searchByCategory'])->name('search.list');
 Route::get('/show-video', [SearchController::class, 'showVideo'])->name('search.show_video');
-Route::post('/mark-video-favorite', [SearchController::class, 'markVideoAsFavorite'])->name('search.mark_favorite_video');
-Route::get('/favorites', [SearchController::class, 'getFavorites'])->name('search.favorites.list');
+
 
 require __DIR__.'/auth.php';
