@@ -2,25 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\AreasHelper;
 use App\Models\Favorite;
-use App\Services\Favorite\MarkVideoAsFavorite;
 use App\Services\Search\YouTubeVideoSearch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 
 class SearchController extends Controller
 {
-    public function home()
-    {
-        return Inertia::render('Search/Home', [
-            'areas' => AreasHelper::getAreas(),
-        ]);
-    }
-
     public function searchByCategory(Request $request)
     {
         $category = $request->category;
@@ -50,40 +40,6 @@ class SearchController extends Controller
             'videoId' => $videoId,
             'videoTitle' => $videoTitle,
             'favoriteVideo' => $favoriteVideo,
-        ]);
-    }
-
-    public function markVideoAsFavorite(Request $request)
-    {
-        $validated = $request->validate([
-            'video_id' => 'required',
-            'video_title' => 'required',
-        ]);
-
-        $videoId = $validated['video_id'];
-        $videoTitle = $validated['video_title'];
-
-        DB::transaction(function () use ($videoId, $videoTitle) {
-            app(markVideoAsFavorite::class)->execute($videoId, $videoTitle);
-        });
-
-        return redirect()->route('search.show_video', ['videoId' => $videoId]);
-    }
-
-    public function getFavorites()
-    {
-        $user = Auth::user();
-        $favoriteVideos = null;
-
-        if (isset($user)) {
-            $userId = Auth::user()->id;
-            $favoriteVideos = Favorite::where('user_id', $userId)->get();
-        } else {
-            return redirect()->route('login');
-        }
-
-        return Inertia::render('Search/Favorites', [
-            'videos' => $favoriteVideos,
         ]);
     }
 }

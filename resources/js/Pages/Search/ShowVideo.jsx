@@ -9,7 +9,7 @@ export default function Results({auth, favoriteVideo, videoId, videoTitle}) {
     let favoriteContent;
 
     function markAsFavorite() {
-        router.post(route("search.mark_favorite_video", {video_id: videoId, video_title: videoTitle}));
+        router.post(route("favorites.store", {video_id: videoId, video_title: videoTitle}));
     }
 
     if (auth.user) {

@@ -65,7 +65,7 @@ function Header(props) {
             Home
         </a>
         <div className="">
-            <a href={route('search.favorites.list')} active={route().current('search.favorites.list')}
+            <a href={route('favorites.list')} active={route().current('favorites.list')}
               className="items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-800 bg-white hover:text-gray-500 focus:outline-none transition ease-in-out duration-150">
                 <i className="fa-regular fa-star mr-1 text-indigo-600"></i>
                 Favorites
