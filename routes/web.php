@@ -37,12 +37,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::controller(FavoriteController::class)->prefix('favorites')->group(function() {
+        Route::get('/', 'index')->name('favorites.list');
+        Route::post('/', 'store')->name('favorites.store');
+    });
 });
 
-Route::controller(FavoriteController::class)->prefix('favorites')->group(function() {
-    Route::get('/', 'index')->name('favorites.list');
-    Route::post('/', 'store')->name('favorites.store');
-});
 
 Route::get('/', [HomeController::class, 'show'])->name('home.show');
 
