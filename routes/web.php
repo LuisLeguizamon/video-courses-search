@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SearchController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -37,17 +37,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::controller(FavoriteController::class)->prefix('favorites')->group(function () {
+        Route::get('/', 'index')->name('favorites.list');
+        Route::post('/', 'store')->name('favorites.store');
+    });
 });
 
-Route::controller(FavoriteController::class)->prefix('favorites')->group(function() {
-    Route::get('/', 'index')->name('favorites.list');
-    Route::post('/', 'store')->name('favorites.store');
+Route::controller(CoursesController::class)->prefix('courses')->group(function () {
+    Route::get('/', 'index')->name('courses.list');
+    Route::get('/course', 'show')->name('courses.show');
 });
 
 Route::get('/', [HomeController::class, 'show'])->name('home.show');
-
-Route::get('/search-by-category', [SearchController::class, 'searchByCategory'])->name('search.list');
-Route::get('/show-video', [SearchController::class, 'showVideo'])->name('search.show_video');
-
 
 require __DIR__.'/auth.php';

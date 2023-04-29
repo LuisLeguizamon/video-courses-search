@@ -7,7 +7,7 @@ export default function Home({ auth, areas }){
     const areasNames = [];
 
     const searchByCategory = (data) => {
-        const url = route("search.list");
+        const url = route("courses.list");
         router.get(url, { category: data });
     };
 

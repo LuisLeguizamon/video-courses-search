@@ -13,15 +13,8 @@ class FavoriteController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-        $favoriteVideos = null;
-
-        if (isset($user)) {
-            $userId = Auth::user()->id;
-            $favoriteVideos = Favorite::where('user_id', $userId)->get();
-        } else {
-            return redirect()->route('login');
-        }
+        $userId = Auth::user()->id;
+        $favoriteVideos = Favorite::where('user_id', $userId)->get();
 
         return Inertia::render('Search/Favorites', [
             'videos' => $favoriteVideos,
@@ -42,6 +35,6 @@ class FavoriteController extends Controller
             app(MarkVideoAsFavorite::class)->execute($videoId, $videoTitle);
         });
 
-        return redirect()->route('search.show_video', ['videoId' => $videoId, 'title' => $videoTitle ]);
+        return redirect()->route('courses.show', ['videoId' => $videoId, 'title' => $videoTitle ]);
     }
 }
