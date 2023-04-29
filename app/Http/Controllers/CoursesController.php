@@ -8,10 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
-
-class SearchController extends Controller
+class CoursesController extends Controller
 {
-    public function searchByCategory(Request $request)
+    public function index(Request $request)
     {
         $category = $request->category;
         $videos = app(YouTubeVideoSearch::class)->search($category);
@@ -22,7 +21,7 @@ class SearchController extends Controller
         ]);
     }
 
-    public function showVideo(Request $request)
+    public function show(Request $request)
     {
         $videoId = $request['videoId'];
         $videoTitle = $request['title'];

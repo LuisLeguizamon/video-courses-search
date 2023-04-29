@@ -35,6 +35,6 @@ class FavoriteController extends Controller
             app(MarkVideoAsFavorite::class)->execute($videoId, $videoTitle);
         });
 
-        return redirect()->route('search.show_video', ['videoId' => $videoId, 'title' => $videoTitle ]);
+        return redirect()->route('courses.show', ['videoId' => $videoId, 'title' => $videoTitle ]);
     }
 }

@@ -29,7 +29,7 @@ export default function Favorites({auth, videos}) {
     };
     
     const videosTitle = slicedVideos.map((item) => {
-        const url = route("search.show_video", { 'videoId': item.video_id, 'title': item.title });
+        const url = route("courses.show", { 'videoId': item.video_id, 'title': item.title });
         return (
             <li onClick={ () => goToVideo(url) }
                 className="bg-white capitalize cursor-pointer mt-5 p-5 h-auto w-full rounded shadow-2xl shadow-gray-500/20
