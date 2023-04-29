@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Favorite;
+use App\Services\Favorite\FavoriteChecker;
 use App\Services\Search\YouTubeVideoSearch;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class CoursesController extends Controller
@@ -26,13 +25,7 @@ class CoursesController extends Controller
         $videoId = $request->videoId;
         $videoTitle = $request->title;
 
-        $user = Auth::user();
-        $favoriteVideo = false;
-
-        if (isset($user)) {
-            $userId = Auth::user()->id;
-            $favoriteVideo = Favorite::where('video_id', $request->videoId)->where('user_id', $userId)->exists();
-        }
+        $favoriteVideo = (new FavoriteChecker())->isFavoriteVideo($videoId);
 
         return Inertia::render('Search/ShowVideo', [
             'videoId' => $videoId,
