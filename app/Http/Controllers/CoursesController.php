@@ -23,16 +23,15 @@ class CoursesController extends Controller
 
     public function show(Request $request)
     {
-        $videoId = $request['videoId'];
-        $videoTitle = $request['title'];
+        $videoId = $request->videoId;
+        $videoTitle = $request->title;
 
         $user = Auth::user();
-
         $favoriteVideo = false;
 
         if (isset($user)) {
             $userId = Auth::user()->id;
-            $favoriteVideo = Favorite::where('video_id', $videoId)->where('user_id', $userId)->first() ? true : false;
+            $favoriteVideo = Favorite::where('video_id', $request->videoId)->where('user_id', $userId)->exists();
         }
 
         return Inertia::render('Search/ShowVideo', [
