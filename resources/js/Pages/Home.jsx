@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { router } from '@inertiajs/react';
 import { Head } from '@inertiajs/react';
 import Header from "@/Layouts/Header";
 
-export default function Home({ auth, areas }){    
+export default function Home({ auth, areas }){
+    const[loading, setLoading] = useState(true);
+
+    useEffect( () => {
+        setLoading(false);
+    });
+
+    let bodyContent;
+
     const areasNames = [];
 
     const searchByCategory = (data) => {
@@ -11,6 +19,17 @@ export default function Home({ auth, areas }){
         router.get(url, { category: data });
     };
 
+    if (loading) {
+        bodyContent = <div>Loading</div>
+    } else {
+        bodyContent = 
+        <div className="bg-gray-100 items-center min-h-screen">
+            <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8 p-20">
+                {areasNames}
+            </div>
+        </div>;
+    }
+    
     areas.forEach((data, index) => {
         if (index%2 == 0) {
             areasNames.push(
@@ -41,11 +60,7 @@ export default function Home({ auth, areas }){
         <>
             <Header auth={auth}></Header>
             <Head title="Home" />
-            <div className="bg-gray-100 items-center min-h-screen">
-                <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-8 p-20">
-                    {areasNames}
-                </div>
-            </div>
+            {bodyContent}
         </>
     );
 }
