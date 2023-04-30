@@ -26,7 +26,7 @@ class CoursesController extends Controller
         $videoId = $request->videoId;
         $videoTitle = $request->title;
 
-        $favoriteVideo = (new FavoriteChecker(Auth::user()))->isFavoriteVideo($videoId);
+        $favoriteVideo = (new FavoriteChecker())->isFavoriteVideo($videoId, Auth::user());
 
         return Inertia::render('Search/ShowVideo', [
             'videoId' => $videoId,
