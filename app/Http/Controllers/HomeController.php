@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function show()
     {
-        return Inertia::render('Search/Home', [
+        return Inertia::render('Home', [
             'areas' => AreasHelper::getAreas(),
         ]);
     }
