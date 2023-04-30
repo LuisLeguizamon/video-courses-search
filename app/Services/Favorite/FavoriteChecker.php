@@ -3,15 +3,14 @@
 namespace App\Services\Favorite;
 
 use App\Models\Favorite;
-use Illuminate\Support\Facades\Auth;
 
 class FavoriteChecker
 {
     private $user;
 
-    public function __construct()
+    public function __construct($user)
     {
-        $this->user = Auth::user();
+        $this->user = $user;
     }
 
     public function isFavoriteVideo($videoId): bool
