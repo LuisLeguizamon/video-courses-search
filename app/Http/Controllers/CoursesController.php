@@ -15,7 +15,7 @@ class CoursesController extends Controller
         $category = $request->category;
         $videos = app(YouTubeVideoSearch::class)->search($category);
 
-        return Inertia::render('Search/Results', [
+        return Inertia::render('Courses/List', [
             'category' => $category,
             'videos' => $videos,
         ]);
@@ -28,7 +28,7 @@ class CoursesController extends Controller
 
         $favoriteVideo = (new FavoriteChecker())->isFavoriteVideo($videoId, Auth::user());
 
-        return Inertia::render('Search/ShowVideo', [
+        return Inertia::render('Courses/Show', [
             'videoId' => $videoId,
             'videoTitle' => $videoTitle,
             'favoriteVideo' => $favoriteVideo,
