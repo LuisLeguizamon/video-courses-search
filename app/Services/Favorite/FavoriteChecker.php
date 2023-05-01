@@ -2,22 +2,15 @@
 
 namespace App\Services\Favorite;
 
+use App\Contracts\FavoriteCheckerContract;
 use App\Models\Favorite;
-use Illuminate\Support\Facades\Auth;
 
-class FavoriteChecker
+class FavoriteChecker implements FavoriteCheckerContract
 {
-    private $user;
-
-    public function __construct()
+    public function isFavoriteVideo($videoId, $user): bool
     {
-        $this->user = Auth::user();
-    }
-
-    public function isFavoriteVideo($videoId): bool
-    {
-        if (isset($this->user)) {
-            $favoriteVideo = Favorite::where('video_id', $videoId)->where('user_id', $this->user->id)->exists();
+        if (isset($user)) {
+            $favoriteVideo = Favorite::where('video_id', $videoId)->where('user_id', $user->id)->exists();
         } else {
             $favoriteVideo = false;
         }

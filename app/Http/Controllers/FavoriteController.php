@@ -16,7 +16,7 @@ class FavoriteController extends Controller
         $userId = Auth::user()->id;
         $favoriteVideos = Favorite::where('user_id', $userId)->get();
 
-        return Inertia::render('Search/Favorites', [
+        return Inertia::render('Favorites', [
             'videos' => $favoriteVideos,
         ]);
     }
