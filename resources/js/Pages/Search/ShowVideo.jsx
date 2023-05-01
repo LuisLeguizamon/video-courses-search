@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Head } from '@inertiajs/react';
 import { router } from '@inertiajs/react';
 import Header from "@/Layouts/Header";
+import Spinner from "@/Components/Spinner";
 
 export default function Results({auth, favoriteVideo, videoId, videoTitle}) {
+    const[loading, setLoading] = useState(true);
+
     const url = "https://www.youtube.com/embed/"+videoId;
 
     let favoriteContent;
+
+    const handleLoad = () => {
+        setLoading(false);
+    };
 
     function markAsFavorite() {
         router.post(route("favorites.store", {video_id: videoId, video_title: videoTitle}));
@@ -36,11 +43,16 @@ export default function Results({auth, favoriteVideo, videoId, videoTitle}) {
             <Header auth={auth}></Header>
             <Head title="video" />
             <div className="grid grid-cols-1 mt-20">
-                {favoriteContent}
+                {loading ? (
+                    <Spinner></Spinner>
+                ) : (
+                    favoriteContent
+                )}
                 <div className="m-5">
                     <iframe
                         width="100%"
                         height="315"
+                        onLoad={handleLoad}
                         src={url}
                         title="YouTube video player"
                         frameborder="0"
